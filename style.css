@@ -1,0 +1,87 @@
+/* reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* font */
+
+@font-face {
+    font-family: title;
+    src: url(./font/lotsofdotz.regular.ttf);
+  }
+
+/* body */
+
+body {
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom right, #83FED2, #70E5FF);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* card */
+
+.big-card {
+    margin: auto;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 30px;
+    display: flex;
+    box-shadow: 3px 5px 10px 5px rgb(0 0 0 / 30%);
+    gap: 3rem;
+}
+
+/* control buttons */
+
+.control {
+    display: flex;
+    flex-direction: column;
+    margin-top: 6rem;
+}
+.control,
+.color {
+    margin-bottom: 1.5rem;
+}
+.resolution {
+    margin-top: 4rem;
+}
+.control, 
+.color,
+.resolution {
+    font-size: .875rem;
+    text-align: center;
+    
+}
+
+.slide-container {
+    margin: 1.5rem 0 8rem 0;
+    
+}
+.control button {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: .5rem 2.5rem;
+    margin: .5rem 0;
+}
+
+/* panel */
+
+.panel h1 {
+    font-family: title;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+}
+.container {
+    background-color: lightgray;
+    width: 800px;
+    height: 600px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
