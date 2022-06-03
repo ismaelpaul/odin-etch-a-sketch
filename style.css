@@ -112,10 +112,20 @@ button:hover {
     font-size: 2.5rem;
     margin-bottom: 3rem;
 }
-.container {
-    background-color: lightgray;
+/* grid */
+
+.grid-square {
+    background-color: white;
+    border: 1px solid black;
+}
+
+#container-grid {
+    /* background-color: rgb(238, 238, 238); */
     width: 600px;
     height: 600px;
     border: 2px solid black;
     border-radius: 5px;
+    display: inline-grid;
+    grid-template-columns: repeat(16, 2fr);
+    grid-template-rows: repeat(16, 2fr);
 }
