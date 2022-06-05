@@ -22,7 +22,6 @@
 
 body {
     min-height: 100vh;
-    /* background-image: linear-gradient(to bottom right, #83FED2, #70E5FF); */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -135,8 +134,8 @@ body {
 /* hover */
 
 button:hover {
-    background-color: black;
-    color: white;
+    /* background-color: black; */
+    /* color: white; */
     box-shadow: 3px 2px 20px 1px rgb(0 0 0 / 30%);
     transform: scale(1.1);
 }
@@ -146,13 +145,13 @@ button:hover {
     transform: scale(1.1);
 }
 
- /* animations */
+/* button pressed */
+button:focus {
+    background-color: black;
+    color: white;
+}
+/* animations */
 
- @keyframes slidebg {
-    to {
-      background-position:20vw;
-    }
-  }
 
   @keyframes gradient {
 	0% {
