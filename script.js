@@ -47,47 +47,79 @@ const updateGrid = () => {
 // update the grid when slider is changed by the user
 slider.addEventListener("input", updateGrid);
 
-
+// grid
 const gridSquare = document.getElementsByClassName("grid-square")
+
+// buttons
 const blackColor = document.querySelector("#black")
 const grayscaleColor = document.querySelector("#grayscale")
 const rainbowColor = document.querySelector("#rainbow")
+const erase = document.querySelector("#erase")
 
-const setBlackColor = () => {
+let colorPick;
+let colorTheme;
+
+// sets the color trough buttons
+blackColor.addEventListener("click", function() {
+    colorTheme = "black";
+});
+grayscaleColor.addEventListener("click", function() {
+    colorTheme = "grayscale"
+})
+rainbowColor.addEventListener("click", function() {
+    colorTheme = "rainbow";
+});
+erase.addEventListener("click", function() {
+    colorTheme = "erase"
+})
+
+const setColor = (e) => {
     
-    // iterate trough every square and attach an event listener to it
-    for(var i = 0; i < gridSquare.length; i++) {
-        gridSquare[i].addEventListener('mouseover', function(e){
-            e.target.style.opacity = 1
-            e.target.style.backgroundColor = "black"; 
-        }
-    )}
-}
-
-blackColor.addEventListener("click", setBlackColor);
-
-const setGrayscaleColor = () => {
-    
-    for(var i = 0; i < gridSquare.length; i++) {
-        gridSquare[i].addEventListener('mouseover', function(e){
-            e.target.style.opacity = .2
-            e.target.style.backgroundColor = "gray";
-        }
-    )}
-}
-
-grayscaleColor.addEventListener("click", setGrayscaleColor);
-
-
-const setRainbowColor = () => {
-
-    for(var i = 0; i < gridSquare.length; i++) {
-        gridSquare[i].addEventListener('mouseover', function(e){
+    switch (colorTheme) {
+        case "black":
+            colorPick = "black";
+            e.target.style.backgroundColor = colorPick;
+            console.log(colorPick)
+            break;
+        case "rainbow":
             let rainbowOptions = ['#ff0000', '#ffa500', '#ffff00', '#008000', '#0000ff', '#4b0082', '#ee82ee'];
             let rainbowSelection = rainbowOptions[Math.floor(Math.random() * rainbowOptions.length)];
-            e.target.style.backgroundColor = rainbowSelection;
-        }
-    )}
+            colorPick = rainbowSelection;
+            e.target.style.backgroundColor = colorPick;
+            console.log(colorPick)
+            break;
+        case "grayscale":
+            colorPick = "#E8E8E8";
+            e.target.style.backgroundColor = colorPick;
+            console.log(colorPick)
+            break;
+        case "erase":
+            colorPick = "white";
+            e.target.style.backgroundColor = colorPick;
+            break;
+    }
 }
 
-rainbowColor.addEventListener("click", setRainbowColor);
+// grid hover toggling
+let toggleState = false;
+
+const toToggle = () => {
+
+    // const gridSquare = document.getElementsByClassName("grid-square")
+
+    // activate the hover
+    if (!toggleState) {
+        for(let i = 0; i < gridSquare.length; i++) {
+            gridSquare[i].addEventListener('mouseenter', setColor);
+        };
+        toggleState = true;
+    // deactivate the hover
+    } else {
+        for(let i = 0; i < gridSquare.length; i++) {
+            gridSquare[i].removeEventListener('mouseenter', setColor);
+        };
+        toggleState = false;
+    }
+}
+// activate the grid hover on click
+grid.addEventListener("click", toToggle);
