@@ -56,7 +56,7 @@ const blackColor = document.getElementById("black")
 const grayscaleColor = document.getElementById("grayscale")
 const rainbowColor = document.getElementById("rainbow")
 const colorPickerButton = document.getElementById("pick")
-const colorPicker = document.getElementById("color-picker")
+const colorPicker = document.querySelector("#color-picker")
 const erase = document.getElementById("erase")
 const reset = document.getElementById("reset")
 
@@ -69,7 +69,7 @@ blackColor.addEventListener("click", function() {
 });
 grayscaleColor.addEventListener("click", function() {
     colorTheme = "grayscale"
-})
+});
 rainbowColor.addEventListener("click", function() {
     colorTheme = "rainbow";
 });
@@ -78,10 +78,10 @@ colorPicker.addEventListener("change", function() {
     colorPick = this.value
     colorPickerButton.style.backgroundColor = colorPick
     colorPickerButton.style.border = `2px solid ${colorPick}`
-})
+});
 erase.addEventListener("click", function() {
     colorTheme = "erase"
-})
+});
 
 const setColor = (e) => {
     
@@ -112,41 +112,45 @@ const setColor = (e) => {
 }
 // displays which button is active
 
-let activeButton = false
-
-
-const displayActiveButton = (e) => {
+const displayActiveButton = () => {
     switch (colorTheme) {
         case "black":
             grayscaleColor.classList.remove('active')
             rainbowColor.classList.remove('active')
             erase.classList.remove('active')
             blackColor.classList.add('active')
+            colorPickerButton.style.backgroundColor = "white"
+            colorPickerButton.style.border = "2px solid black"
             break;
         case "grayscale":
             blackColor.classList.remove('active')
             rainbowColor.classList.remove('active')
             erase.classList.remove('active')
             grayscaleColor.classList.add('active')
+            colorPickerButton.style.backgroundColor = "white"
+            colorPickerButton.style.border = "2px solid black"
             break;
         case "rainbow":
             grayscaleColor.classList.remove('active')
             blackColor.classList.remove('active')
             erase.classList.remove('active')
             rainbowColor.classList.add('active')
+            colorPickerButton.style.backgroundColor = "white"
+            colorPickerButton.style.border = "2px solid black"
             break;
         case "erase":
             grayscaleColor.classList.remove('active')
             blackColor.classList.remove('active')
             rainbowColor.classList.remove('active')
             erase.classList.add('active')
+            colorPickerButton.style.backgroundColor = "white"
+            colorPickerButton.style.border = "2px solid black"
             break;
         case "colorPicker":
             grayscaleColor.classList.remove('active')
             blackColor.classList.remove('active')
             rainbowColor.classList.remove('active')
             erase.classList.remove('active')
-            colorPickerButton.style.backgroundColor = colorPick
             break;
 
     }
