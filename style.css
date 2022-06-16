@@ -60,9 +60,11 @@ body {
 .color {
     margin-bottom: 1.5rem;
 }
+
 .resolution {
     margin-top: 5rem;
 }
+
 .control, 
 .color,
 .resolution {
@@ -75,9 +77,11 @@ body {
     width: 100%;
     margin: 1.3rem 0 5.3rem 0;
 }
+
 .slide-container p {
     margin-top: 1rem;
 }
+
 .slider {
     -webkit-appearance: none;
     width: 100%;
@@ -91,7 +95,7 @@ body {
     transition: opacity .2s;
 }
   
-  .slider::-webkit-slider-thumb {
+.slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 20px;
@@ -112,7 +116,27 @@ body {
     cursor: pointer;
     transition: all .2s ease-in-out;
 }
+button.active {
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: .5rem 2.5rem;
+    margin: .5rem 0;
+    cursor: pointer;
 
+}
+
+input[type=color] {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+    margin-left: -6rem;
+    margin-top: -.5rem;
+    min-width: 10rem;
+    min-height: 2rem;
+}
 /* panel */
 
 .panel h1 {
@@ -121,6 +145,7 @@ body {
     font-size: 2.5rem;
     margin-bottom: 3rem;
 }
+
 /* grid */
 
 .grid-square {
@@ -153,6 +178,7 @@ footer {
 footer i {
     color: black;
 }
+
 /* hover */
 
 button:hover {
