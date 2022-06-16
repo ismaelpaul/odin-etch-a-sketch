@@ -58,6 +58,7 @@ const rainbowColor = document.getElementById("rainbow")
 const colorPickerButton = document.getElementById("pick")
 const colorPicker = document.getElementById("color-picker")
 const erase = document.getElementById("erase")
+const reset = document.getElementById("reset")
 
 let colorPick;
 let colorTheme;
@@ -74,7 +75,9 @@ rainbowColor.addEventListener("click", function() {
 });
 colorPicker.addEventListener("change", function() {
     colorTheme = "colorPicker"
-    console.log(colorPick)
+    colorPick = this.value
+    colorPickerButton.style.backgroundColor = colorPick
+    colorPickerButton.style.border = `2px solid ${colorPick}`
 })
 erase.addEventListener("click", function() {
     colorTheme = "erase"
@@ -86,30 +89,20 @@ const setColor = (e) => {
         case "black":
             colorPick = "black";
             e.target.style.backgroundColor = colorPick;
-            console.log(colorPick)
-            console.log(e.target)
             break;
         case "rainbow":
             let rainbowOptions = ['#9400D3', '#4B0082', '#0000FF', '#00FF00', '#FFFF00', '#FF7F00', '#FF0000'];
             let rainbowSelection = rainbowOptions[Math.floor(Math.random() * rainbowOptions.length)];
             colorPick = rainbowSelection;
             e.target.style.backgroundColor = colorPick;
-            console.log(colorPick)
-            console.log(e.target)
             break;
         case "grayscale":
             colorPick = "#E8E8E8";
             e.target.style.backgroundColor = colorPick;
-            console.log(colorPick)
-            console.log(e.target)
             break;
         case "colorPicker":
             colorPick = colorPicker.value
-            colorPickerButton.style.backgroundColor = colorPick
-            colorPickerButton.style.border = `2px solid ${colorPick}`
             e.target.style.backgroundColor = colorPick
-            console.log(e.target)
-            console.log(colorPick)
             break;
         case "erase":
             colorPick = "white";
@@ -154,6 +147,7 @@ const displayActiveButton = (e) => {
             rainbowColor.classList.remove('active')
             erase.classList.remove('active')
             colorPickerButton.style.backgroundColor = colorPick
+            break;
 
     }
 }
@@ -183,3 +177,5 @@ const toToggle = () => {
 }
 // activate the grid hover on click
 grid.addEventListener("click", toToggle);
+
+reset.addEventListener("click", updateGrid)
