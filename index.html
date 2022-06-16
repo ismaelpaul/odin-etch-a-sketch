@@ -19,11 +19,15 @@
                 <button id="black">Black</button>
                 <button id="grayscale">Grayscale</button>
                 <button id="rainbow">Rainbow</button>
-                <button id="pick">Pick</button>
+                <button id="pick">Pick
+                    <input type="color" id="color-picker" value="#e66465">
+                </button>
+    
+
                 <p class="resolution">Resolution</p>
                 <div class="slide-container">
                     <input type="range" min="16" max="48" value="16" class="slider" id="range-slider" step="4">
-                    <p><span id="range-grid"></span>x<span id="range-grid"></span></p>
+                    <p><span id="range-grid"></span>x</p>
                 </div>
                 <button id="erase">Erase</button>
                 <button id="reset">Reset</button>
@@ -41,5 +45,5 @@
         </footer>
     </main>
 </body>
-<script src="script.js" defer></script>
+<script src="script.js"></script>
 </html>
