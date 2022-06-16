@@ -47,14 +47,17 @@ const updateGrid = () => {
 // update the grid when slider is changed by the user
 slider.addEventListener("input", updateGrid);
 
-// grid
+// grid (generates html collection)
 const gridSquare = document.getElementsByClassName("grid-square")
 
 // buttons
-const blackColor = document.querySelector("#black")
-const grayscaleColor = document.querySelector("#grayscale")
-const rainbowColor = document.querySelector("#rainbow")
-const erase = document.querySelector("#erase")
+const buttons = document.querySelectorAll("button")
+const blackColor = document.getElementById("black")
+const grayscaleColor = document.getElementById("grayscale")
+const rainbowColor = document.getElementById("rainbow")
+const colorPickerButton = document.getElementById("pick")
+const colorPicker = document.getElementById("color-picker")
+const erase = document.getElementById("erase")
 
 let colorPick;
 let colorTheme;
@@ -69,6 +72,10 @@ grayscaleColor.addEventListener("click", function() {
 rainbowColor.addEventListener("click", function() {
     colorTheme = "rainbow";
 });
+colorPicker.addEventListener("change", function() {
+    colorTheme = "colorPicker"
+    console.log(colorPick)
+})
 erase.addEventListener("click", function() {
     colorTheme = "erase"
 })
@@ -80,17 +87,28 @@ const setColor = (e) => {
             colorPick = "black";
             e.target.style.backgroundColor = colorPick;
             console.log(colorPick)
+            console.log(e.target)
             break;
         case "rainbow":
-            let rainbowOptions = ['#ff0000', '#ffa500', '#ffff00', '#008000', '#0000ff', '#4b0082', '#ee82ee'];
+            let rainbowOptions = ['#9400D3', '#4B0082', '#0000FF', '#00FF00', '#FFFF00', '#FF7F00', '#FF0000'];
             let rainbowSelection = rainbowOptions[Math.floor(Math.random() * rainbowOptions.length)];
             colorPick = rainbowSelection;
             e.target.style.backgroundColor = colorPick;
             console.log(colorPick)
+            console.log(e.target)
             break;
         case "grayscale":
             colorPick = "#E8E8E8";
             e.target.style.backgroundColor = colorPick;
+            console.log(colorPick)
+            console.log(e.target)
+            break;
+        case "colorPicker":
+            colorPick = colorPicker.value
+            colorPickerButton.style.backgroundColor = colorPick
+            colorPickerButton.style.border = `2px solid ${colorPick}`
+            e.target.style.backgroundColor = colorPick
+            console.log(e.target)
             console.log(colorPick)
             break;
         case "erase":
@@ -99,13 +117,55 @@ const setColor = (e) => {
             break;
     }
 }
+// displays which button is active
+
+let activeButton = false
+
+
+const displayActiveButton = (e) => {
+    switch (colorTheme) {
+        case "black":
+            grayscaleColor.classList.remove('active')
+            rainbowColor.classList.remove('active')
+            erase.classList.remove('active')
+            blackColor.classList.add('active')
+            break;
+        case "grayscale":
+            blackColor.classList.remove('active')
+            rainbowColor.classList.remove('active')
+            erase.classList.remove('active')
+            grayscaleColor.classList.add('active')
+            break;
+        case "rainbow":
+            grayscaleColor.classList.remove('active')
+            blackColor.classList.remove('active')
+            erase.classList.remove('active')
+            rainbowColor.classList.add('active')
+            break;
+        case "erase":
+            grayscaleColor.classList.remove('active')
+            blackColor.classList.remove('active')
+            rainbowColor.classList.remove('active')
+            erase.classList.add('active')
+            break;
+        case "colorPicker":
+            grayscaleColor.classList.remove('active')
+            blackColor.classList.remove('active')
+            rainbowColor.classList.remove('active')
+            erase.classList.remove('active')
+            colorPickerButton.style.backgroundColor = colorPick
+
+    }
+}
+
+buttons.forEach(button => {
+    button.addEventListener("click", displayActiveButton)
+})
 
 // grid hover toggling
 let toggleState = false;
 
 const toToggle = () => {
-
-    // const gridSquare = document.getElementsByClassName("grid-square")
 
     // activate the hover
     if (!toggleState) {
