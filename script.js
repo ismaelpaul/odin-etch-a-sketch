@@ -85,8 +85,10 @@ erase.addEventListener("click", function() {
     colorTheme = "erase"
 });
 
+// let currentOpacity = 0.1
+
 const setColor = (e) => {
-    
+
     switch (colorTheme) {
         case "black":
             colorPick = "black";
@@ -99,9 +101,14 @@ const setColor = (e) => {
             e.target.style.backgroundColor = colorPick;
             break;
         case "grayscale":
-            colorPick = "#E8E8E8";
+            colorPick = "black";
             e.target.style.backgroundColor = colorPick;
-            break;
+            // checks opacity and set and increases it
+            if (e.target.style.opacity <= 0.9) {
+                e.target.style.opacity = +e.target.style.opacity + 0.2;
+            } else {
+                e.target.style.opacity = 1;
+            } break;
         case "colorPicker":
             colorPick = colorPicker.value
             e.target.style.backgroundColor = colorPick
@@ -184,4 +191,5 @@ const toToggle = () => {
 // activate the grid hover on click
 grid.addEventListener("click", toToggle);
 
+// reset grid
 reset.addEventListener("click", updateGrid)
