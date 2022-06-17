@@ -73,8 +73,10 @@ grayscaleColor.addEventListener("click", function() {
 rainbowColor.addEventListener("click", function() {
     colorTheme = "rainbow";
 });
-colorPicker.addEventListener("change", function() {
+colorPicker.addEventListener("click", function() {
     colorTheme = "colorPicker"
+})
+colorPicker.addEventListener("change", function() {
     colorPick = this.value
     colorPickerButton.style.backgroundColor = colorPick
     colorPickerButton.style.border = `2px solid ${colorPick}`
